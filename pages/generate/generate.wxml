@@ -99,11 +99,11 @@
     <view class="scene-grid-wrap" wx:if="{{currentTab === 'official'}}">
       <view class="scene-card {{selectedScene === 'notice' ? 'selected' : ''}}" bindtap="selectScene" data-scene="notice">
         <view class="scene-icon">📢</view>
-        <text class="scene-name">通知公告</text>
+        <text class="scene-name">工作通知</text>
       </view>
       <view class="scene-card {{selectedScene === 'announcement' ? 'selected' : ''}}" bindtap="selectScene" data-scene="announcement">
-        <view class="scene-icon">📋</view>
-        <text class="scene-name">活动预告</text>
+        <view class="scene-icon">🎪</view>
+        <text class="scene-name">活动招募</text>
       </view>
       <view class="scene-card {{selectedScene === 'club' ? 'selected' : ''}}" bindtap="selectScene" data-scene="club">
         <view class="scene-icon">🎭</view>
@@ -151,7 +151,7 @@
       <view class="action-row">
         <button class="btn-generate" bindtap="generateContent" disabled="{{isGenerating}}">
           <view class="btn-glow"></view>
-          <text class="btn-text">{{isGenerating ? '正在施法...' : '开始优化'}}</text>
+          <text class="btn-text">{{isGenerating ? '正在施法...' : '开始生成'}}</text>
         </button>
       </view>
     </view>

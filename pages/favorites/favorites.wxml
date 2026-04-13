@@ -1,0 +1,6 @@
+<view class="container {{themeClass}}">
+  <view class="fav-list" wx:if="{{favList.length > 0}}">
+    <view class="fav-item" wx:for="{{favList}}" wx:key="index" bindtap="copyItem" data-content="{{item}}">
+      <view class="item-text">{{item}}</view>
+      <view class="item-copy">复制</view>
+    </view>

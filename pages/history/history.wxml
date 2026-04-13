@@ -1,0 +1,16 @@
+<view class="container {{themeClass}}">
+  <view class="history-list" wx:if="{{historyList.length > 0}}">
+    <view class="history-item" wx:for="{{historyList}}" wx:key="id" bindtap="copyItem" data-content="{{item.content || item.title}}">
+      <view class="item-content">
+        <view class="item-title">{{item.title || item.content}}</view>
+        <view class="item-time">{{item.time}}</view>
+      </view>
+      <view class="item-copy">复制</view>
+    </view>
+  </view>
+  
+  <view class="empty-state" wx:else>
+    <text class="empty-icon">📭</text>
+    <text class="empty-text">暂无历史记录</text>
+  </view>
+</view>

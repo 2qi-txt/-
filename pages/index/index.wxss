@@ -186,8 +186,8 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* 模式选择 */
-.mode-selection {
+/* 快捷操作 */
+.quick-actions {
   padding: 40rpx 40rpx;
 }
 
@@ -212,53 +212,52 @@
   letter-spacing: 4rpx;
 }
 
-.mode-grid {
+.action-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20rpx;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16rpx;
 }
 
-.mode-item {
+.action-item {
   background: var(--card-bg);
   border: 1rpx solid var(--card-border);
-  padding: 28rpx 20rpx;
   border-radius: 16rpx;
+  padding: 24rpx 12rpx;
   text-align: center;
   transition: all 0.3s ease;
 }
 
-.mode-item:active {
-  transform: scale(0.96);
+.action-item:active {
+  transform: scale(0.95);
   background: rgba(255, 255, 255, 0.08);
 }
 
-.mode-icon-wrapper {
-  width: 88rpx;
-  height: 88rpx;
-  margin: 0 auto 16rpx;
-  border-radius: 50%;
+.action-icon-box {
+  width: 80rpx;
+  height: 80rpx;
+  margin: 0 auto 12rpx;
+  border-radius: 20rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 44rpx;
-  border: 2rpx solid var(--card-border);
+  font-size: 40rpx;
 }
 
-.notice-bg { background: rgba(59, 130, 246, 0.15); }
-.announcement-bg { background: rgba(16, 185, 129, 0.15); }
-.club-bg { background: rgba(245, 158, 11, 0.15); }
-.social-bg { background: rgba(239, 68, 68, 0.15); }
+.history-bg { background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(16, 185, 129, 0.1)); }
+.help-bg { background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(245, 158, 11, 0.1)); }
+.clear-bg { background: linear-gradient(135deg, rgba(239, 68, 68, 0.3), rgba(239, 68, 68, 0.1)); }
+.vip-bg { background: linear-gradient(135deg, rgba(234, 179, 8, 0.3), rgba(234, 179, 8, 0.1)); }
 
-.mode-name {
-  font-size: 26rpx;
+.action-name {
+  font-size: 24rpx;
   color: #fff;
   font-weight: 600;
-  margin-bottom: 8rpx;
+  margin-bottom: 4rpx;
 }
 
-.mode-level {
+.action-desc {
   font-size: 18rpx;
-  color: var(--primary-light);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 /* 战绩列表 */

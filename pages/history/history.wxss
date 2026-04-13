@@ -1,0 +1,107 @@
+/* 历史记录页 */
+
+/* 主题变量 */
+.skin-libai {
+  --primary: #6366f1;
+  --primary-light: #818cf8;
+  --card-bg: rgba(30, 30, 50, 0.6);
+  --card-border: rgba(99, 102, 241, 0.3);
+  --bg-start: #0a0a12;
+  --bg-end: #0d0d18;
+  --text-primary: #fff;
+  --text-secondary: rgba(255, 255, 255, 0.5);
+}
+
+.skin-diaochan {
+  --primary: #ec4899;
+  --primary-light: #f472b6;
+  --card-bg: rgba(50, 30, 40, 0.6);
+  --card-border: rgba(236, 72, 153, 0.3);
+  --bg-start: #1a0a14;
+  --bg-end: #2d1f3d;
+  --text-primary: #fff;
+  --text-secondary: rgba(255, 255, 255, 0.5);
+}
+
+.skin-lan {
+  --primary: #0891b2;
+  --primary-light: #06b6d4;
+  --card-bg: rgba(20, 40, 50, 0.6);
+  --card-border: rgba(8, 145, 178, 0.3);
+  --bg-start: #061018;
+  --bg-end: #0c1a2e;
+  --text-primary: #fff;
+  --text-secondary: rgba(255, 255, 255, 0.5);
+}
+
+.skin-caiwenji {
+  --primary: #f59e0b;
+  --primary-light: #fbbf24;
+  --card-bg: rgba(50, 40, 20, 0.6);
+  --card-border: rgba(245, 158, 11, 0.3);
+  --bg-start: #1a1008;
+  --bg-end: #2d2410;
+  --text-primary: #fff;
+  --text-secondary: rgba(255, 255, 255, 0.5);
+}
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
+  padding: 30rpx;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.history-item {
+  background: var(--card-bg);
+  border: 1rpx solid var(--card-border);
+  border-radius: 12rpx;
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+}
+
+.item-content {
+  flex: 1;
+}
+
+.item-title {
+  font-size: 26rpx;
+  color: var(--text-primary);
+  margin-bottom: 8rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-time {
+  font-size: 22rpx;
+  color: var(--text-secondary);
+}
+
+.item-arrow {
+  color: var(--primary);
+  font-size: 24rpx;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 200rpx;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  margin-bottom: 30rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+}

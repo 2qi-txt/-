@@ -38,44 +38,44 @@
     </view>
   </view>
 
-  <!-- 快速生成：类似游戏模式选择 -->
-  <view class="mode-selection">
+  <!-- 快捷操作 -->
+  <view class="quick-actions">
     <view class="section-header">
       <text class="header-line"></text>
-      <text class="header-text">模式选择</text>
+      <text class="header-text">快捷操作</text>
       <text class="header-line"></text>
     </view>
-    <view class="mode-grid">
-      <view class="mode-item" bindtap="quickGenerate" data-type="notice">
-        <view class="mode-icon-wrapper notice-bg">
-          <text class="mode-icon">📢</text>
+    <view class="action-grid">
+      <view class="action-item" bindtap="goHistory">
+        <view class="action-icon-box history-bg">
+          <text class="action-icon">📜</text>
         </view>
-        <view class="mode-name">通知公告</view>
-        <view class="mode-level">难度：★☆☆</view>
+        <view class="action-name">历史记录</view>
+        <view class="action-desc">{{historyCount}} 条记录</view>
       </view>
       
-      <view class="mode-item" bindtap="quickGenerate" data-type="announcement">
-        <view class="mode-icon-wrapper announcement-bg">
-          <text class="mode-icon">📋</text>
+      <view class="action-item" bindtap="goHelp">
+        <view class="action-icon-box help-bg">
+          <text class="action-icon">❓</text>
         </view>
-        <view class="mode-name">活动预告</view>
-        <view class="mode-level">难度：★★☆</view>
+        <view class="action-name">使用帮助</view>
+        <view class="action-desc">新手教程</view>
       </view>
       
-      <view class="mode-item" bindtap="quickGenerate" data-type="club">
-        <view class="mode-icon-wrapper club-bg">
-          <text class="mode-icon">🎭</text>
+      <view class="action-item" bindtap="clearCache">
+        <view class="action-icon-box clear-bg">
+          <text class="action-icon">🔄</text>
         </view>
-        <view class="mode-name">社团动态</view>
-        <view class="mode-level">难度：★★☆</view>
+        <view class="action-name">清除缓存</view>
+        <view class="action-desc">释放存储空间</view>
       </view>
       
-      <view class="mode-item" bindtap="quickGenerate" data-type="social">
-        <view class="mode-icon-wrapper social-bg">
-          <text class="mode-icon">📱</text>
+      <view class="action-item" bindtap="goVIP">
+        <view class="action-icon-box vip-bg">
+          <text class="action-icon">👑</text>
         </view>
-        <view class="mode-name">社交平台</view>
-        <view class="mode-level">难度：★★★</view>
+        <view class="action-name">开通VIP</view>
+        <view class="action-desc">解锁更多功能</view>
       </view>
     </view>
   </view>
