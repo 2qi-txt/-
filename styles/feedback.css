@@ -1,0 +1,84 @@
+/**
+ * 反馈页样式
+ * 对应原小程序: pages/feedback/feedback.wxss
+ */
+
+/* 头部 */
+.header {
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.header .title {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--text-gold);
+  font-style: italic;
+}
+
+.header .subtitle {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 6px;
+}
+
+/* 表单 */
+.form-item .label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Section */
+.section {
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--text-gold);
+  margin: 20px 0 12px;
+  padding-left: 10px;
+  border-left: 3px solid var(--primary-gold);
+}
+
+/* 列表 */
+.list .item {
+  padding: 14px;
+  background: var(--bg-secondary);
+  border: 1px solid rgba(194, 156, 74, 0.1);
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.item-title {
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.item-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+
+.item-meta {
+  font-size: 10px;
+  color: #64748b;
+}
+
+/* 操作按钮 */
+.actions {
+  display: flex;
+  gap: 12px;
+  padding: 20px;
+}
+
+.actions .btn {
+  flex: 1;
+}

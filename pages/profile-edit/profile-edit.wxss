@@ -1,0 +1,244 @@
+/* ============================================
+   编辑资料 - 电竞风格
+   ============================================ */
+
+/* 页面头部 */
+.page-header {
+  padding: 60rpx 40rpx 40rpx;
+  text-align: center;
+  position: relative;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400rpx;
+  height: 200rpx;
+  background: radial-gradient(ellipse at center, var(--primary-glow) 0%, transparent 70%);
+  opacity: 0.4;
+}
+
+.page-title {
+  font-size: 52rpx;
+  font-weight: 900;
+  color: var(--primary-light);
+  text-shadow: 0 0 30rpx var(--primary-glow);
+  position: relative;
+  z-index: 1;
+  letter-spacing: 8rpx;
+}
+
+/* 表单区域 */
+.form-section {
+  padding: 0 40rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+}
+
+/* 头像卡片 */
+.avatar-card {
+  background: var(--card-bg);
+  border-radius: 24rpx;
+  padding: 48rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28rpx;
+  border: 1rpx solid var(--card-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.avatar-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1rpx;
+  background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+  opacity: 0.5;
+}
+
+/* 头像容器 */
+.avatar-wrapper {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  padding: 6rpx;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  box-shadow: 0 8rpx 32rpx var(--primary-glow);
+}
+
+.avatar-preview {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: block;
+}
+
+/* 更换头像按钮 */
+.change-avatar-btn {
+  height: 72rpx;
+  padding: 0 48rpx;
+  border-radius: 36rpx;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 2rpx;
+  box-shadow: 0 4rpx 16rpx var(--primary-glow);
+}
+
+.change-avatar-btn:active {
+  transform: scale(0.96);
+  filter: brightness(1.1);
+}
+
+/* 表单卡片 */
+.form-card {
+  background: var(--card-bg);
+  border-radius: 24rpx;
+  padding: 32rpx;
+  border: 1rpx solid var(--card-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1rpx;
+  background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+  opacity: 0.3;
+}
+
+/* 表单项 */
+.form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  margin-bottom: 28rpx;
+}
+
+.form-item:last-child {
+  margin-bottom: 0;
+}
+
+.form-label {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 2rpx;
+}
+
+/* 输入框 */
+.text-input {
+  height: 96rpx;
+  line-height: 96rpx;
+  font-size: 30rpx;
+  border: 2rpx solid var(--card-border);
+  border-radius: 16rpx;
+  background: rgba(0,0,0,0.3);
+  padding: 0 28rpx;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.text-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 20rpx var(--primary-glow);
+}
+
+.textarea {
+  width: 100%;
+  min-height: 160rpx;
+  border: 2rpx solid var(--card-border);
+  border-radius: 16rpx;
+  background: rgba(0,0,0,0.3);
+  padding: 24rpx;
+  font-size: 30rpx;
+  line-height: 1.6;
+  box-sizing: border-box;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 20rpx var(--primary-glow);
+}
+
+/* 底部按钮 */
+.actions {
+  padding: 40rpx;
+  display: flex;
+  gap: 24rpx;
+}
+
+/* 取消按钮 */
+.btn-cancel {
+  flex: 1;
+  height: 96rpx;
+  border-radius: 48rpx;
+  background: rgba(255,255,255,0.05);
+  border: 2rpx solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 4rpx;
+}
+
+.btn-cancel:active {
+  transform: scale(0.97);
+  background: rgba(255,255,255,0.1);
+}
+
+/* 保存按钮 */
+.btn-save {
+  flex: 2;
+  height: 96rpx;
+  border-radius: 48rpx;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 6rpx;
+  box-shadow: 0 8rpx 24rpx var(--primary-glow);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-save::before {
+  content: '';
+  position: absolute;
+  top: 2rpx;
+  left: 8%;
+  right: 8%;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.2), transparent);
+  border-radius: 48rpx 48rpx 50% 50%;
+}
+
+.btn-save:active {
+  transform: scale(0.97);
+  filter: brightness(1.1);
+}

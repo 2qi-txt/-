@@ -1,0 +1,277 @@
+<!--pages/collaboration/collaboration.wxml-->
+<view class="container {{themeClass}}">
+  <!-- 标题栏 -->
+  <view class="header">
+    <view class="title">协作中心</view>
+    <view class="subtitle">团队共享，协作创作</view>
+  </view>
+
+  <!-- 标签页 -->
+  <view class="tab-bar">
+    <view class="tab-item {{currentTab === 'teams' ? 'active' : ''}}" 
+          data-tab="teams" bindtap="switchTab">
+      我的团队
+    </view>
+    <view class="tab-item {{currentTab === 'shared' ? 'active' : ''}}" 
+          data-tab="shared" bindtap="switchTab">
+      共享内容
+    </view>
+    <view class="tab-item {{currentTab === 'collaborate' ? 'active' : ''}}" 
+          data-tab="collaborate" bindtap="switchTab">
+      协作编辑
+    </view>
+  </view>
+
+  <!-- 团队页面 -->
+  <view class="content" wx:if="{{currentTab === 'teams'}}">
+    <!-- 团队列表 -->
+    <view class="teams-section">
+      <view class="section-header">
+        <text class="section-title">我的团队</text>
+        <view class="action-buttons">
+          <view class="action-btn" bindtap="createTeam">+ 创建团队</view>
+          <view class="action-btn" bindtap="joinTeam">+ 加入团队</view>
+        </view>
+      </view>
+      
+      <view class="teams-list">
+        <view class="team-card {{currentTeam && currentTeam.id === item.id ? 'selected' : ''}}" 
+              wx:for="{{teams}}" 
+              wx:key="id"
+              data-id="{{item.id}}"
+              bindtap="selectTeam">
+          <view class="team-header">
+            <view class="team-avatar">{{item.avatar}}</view>
+            <view class="team-info">
+              <text class="team-name">{{item.name}}</text>
+              <text class="team-description">{{item.description}}</text>
+            </view>
+            <view class="team-role {{item.role}}">{{item.role === 'owner' ? '创建者' : item.role === 'admin' ? '管理员' : '成员'}}</view>
+          </view>
+          
+          <view class="team-stats">
+            <view class="stat-item">
+              <text class="stat-number">{{item.memberCount}}</text>
+              <text class="stat-label">成员</text>
+            </view>
+            <view class="stat-item">
+              <text class="stat-number">{{item.lastActive}}</text>
+              <text class="stat-label">最后活跃</text>
+            </view>
+          </view>
+          
+          <view class="team-actions" wx:if="{{currentTeam && currentTeam.id === item.id}}">
+            <view class="action-btn small" bindtap="inviteMember">邀请成员</view>
+            <view class="action-btn small" bindtap="manageTeam">管理团队</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 团队详情 -->
+    <view class="team-detail" wx:if="{{currentTeam}}">
+      <view class="detail-section">
+        <view class="section-title">团队成员</view>
+        <view class="members-list">
+          <view class="member-item" wx:for="{{teamMembers}}" wx:key="id">
+            <view class="member-avatar">{{item.avatar}}</view>
+            <view class="member-info">
+              <text class="member-name">{{item.name}}</text>
+              <text class="member-role">{{item.role === 'owner' ? '创建者' : item.role === 'admin' ? '管理员' : '成员'}}</text>
+            </view>
+            <view class="member-status {{item.isOnline ? 'online' : 'offline'}}">
+              {{item.isOnline ? '在线' : '离线'}}
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="detail-section">
+        <view class="section-title">团队统计</view>
+        <view class="stats-grid">
+          <view class="stat-card">
+            <text class="stat-number">{{teamStats.totalMembers}}</text>
+            <text class="stat-label">总成员</text>
+          </view>
+          <view class="stat-card">
+            <text class="stat-number">{{teamStats.totalContent}}</text>
+            <text class="stat-label">共享内容</text>
+          </view>
+          <view class="stat-card">
+            <text class="stat-number">{{teamStats.activeMembers}}</text>
+            <text class="stat-label">活跃成员</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 共享内容页面 -->
+  <view class="content" wx:if="{{currentTab === 'shared'}}">
+    <view class="shared-content-list">
+      <view class="content-card" wx:for="{{sharedContent}}" wx:key="id">
+        <view class="content-header">
+          <view class="content-title">{{item.title}}</view>
+          <view class="content-status {{item.status}}">{{item.status === 'published' ? '已发布' : '草稿'}}</view>
+        </view>
+        
+        <view class="content-preview">{{item.content}}</view>
+        
+        <view class="content-meta">
+          <view class="author-info">
+            <view class="author-avatar">{{item.authorAvatar}}</view>
+            <view class="author-details">
+              <text class="author-name">{{item.author}}</text>
+              <text class="team-name">{{item.teamName}}</text>
+            </view>
+          </view>
+          
+          <view class="content-stats">
+            <view class="stat-item">
+              <text class="stat-icon">👀</text>
+              <text class="stat-number">{{item.viewCount}}</text>
+            </view>
+            <view class="stat-item">
+              <text class="stat-icon">❤️</text>
+              <text class="stat-number">{{item.likeCount}}</text>
+            </view>
+            <view class="stat-item">
+              <text class="stat-icon">💬</text>
+              <text class="stat-number">{{item.commentCount}}</text>
+            </view>
+          </view>
+        </view>
+        
+        <view class="content-tags">
+          <text class="tag" wx:for="{{item.tags}}" wx:key="index" wx:for-item="tag">{{tag}}</text>
+        </view>
+        
+        <view class="content-actions">
+          <view class="action-btn {{item.isLiked ? 'liked' : ''}}" 
+                data-id="{{item.id}}" 
+                bindtap="likeContent">
+            {{item.isLiked ? '❤️' : '🤍'}} {{item.likeCount}}
+          </view>
+          <view class="action-btn" data-id="{{item.id}}" bindtap="viewComments">
+            💬 {{item.commentCount}}
+          </view>
+          <view class="action-btn {{item.isBookmarked ? 'bookmarked' : ''}}" 
+                data-id="{{item.id}}" 
+                bindtap="bookmarkContent">
+            {{item.isBookmarked ? '🔖' : '📌'}}
+          </view>
+          <view class="action-btn" data-id="{{item.id}}" bindtap="shareToTeam">
+            📤 分享
+          </view>
+        </view>
+        
+        <view class="content-footer">
+          <text class="create-time">{{item.createTime}}</text>
+          <text class="version">v{{item.version}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 协作编辑页面 -->
+  <view class="content" wx:if="{{currentTab === 'collaborate'}}">
+    <view class="collaborate-section">
+      <view class="section-title">协作编辑</view>
+      <view class="collaborate-list">
+        <view class="collaborate-item" wx:for="{{sharedContent}}" wx:key="id">
+          <view class="item-header">
+            <text class="item-title">{{item.title}}</text>
+            <view class="item-status">{{item.status === 'published' ? '已发布' : '草稿'}}</view>
+          </view>
+          
+          <view class="item-preview">{{item.content}}</view>
+          
+          <view class="collaborators">
+            <text class="collaborators-label">协作者：</text>
+            <view class="collaborator-avatars">
+              <view class="collaborator-avatar" 
+                    wx:for="{{item.collaborators}}" 
+                    wx:key="index"
+                    wx:for-item="collaborator">
+                {{collaborator.avatar}}
+              </view>
+            </view>
+          </view>
+          
+          <view class="item-actions">
+            <view class="action-btn" data-id="{{item.id}}" bindtap="collaborateEdit">
+              ✏️ 开始编辑
+            </view>
+            <view class="action-btn" data-id="{{item.id}}" bindtap="viewVersionHistory">
+              📋 版本历史
+            </view>
+            <view class="action-btn" data-id="{{item.id}}" bindtap="viewContentDetail">
+              👁️ 查看详情
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 创建团队弹窗 -->
+  <view class="modal-overlay" wx:if="{{isCreatingTeam}}" bindtap="cancelCreateTeam">
+    <view class="modal-content" catchtap="true">
+      <view class="modal-header">
+        <text class="modal-title">创建团队</text>
+        <view class="modal-close" bindtap="cancelCreateTeam">×</view>
+      </view>
+      
+      <view class="modal-body">
+        <view class="input-group">
+          <text class="input-label">团队名称</text>
+          <input class="input-field" 
+                 placeholder="请输入团队名称" 
+                 value="{{newTeamData.name}}"
+                 data-field="name"
+                 bindinput="onTeamInputChange" />
+        </view>
+        
+        <view class="input-group">
+          <text class="input-label">团队描述</text>
+          <textarea class="textarea-field" 
+                    placeholder="请输入团队描述" 
+                    value="{{newTeamData.description}}"
+                    data-field="description"
+                    bindinput="onTeamInputChange"></textarea>
+        </view>
+      </view>
+      
+      <view class="modal-footer">
+        <view class="modal-btn cancel" bindtap="cancelCreateTeam">取消</view>
+        <view class="modal-btn confirm" bindtap="submitCreateTeam">创建</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加入团队弹窗 -->
+  <view class="modal-overlay" wx:if="{{isJoiningTeam}}" bindtap="cancelJoinTeam">
+    <view class="modal-content" catchtap="true">
+      <view class="modal-header">
+        <text class="modal-title">加入团队</text>
+        <view class="modal-close" bindtap="cancelJoinTeam">×</view>
+      </view>
+      
+      <view class="modal-body">
+        <view class="input-group">
+          <text class="input-label">邀请码</text>
+          <input class="input-field" 
+                 placeholder="请输入团队邀请码" 
+                 value="{{joinCode}}"
+                 bindinput="onJoinCodeInput" />
+        </view>
+      </view>
+      
+      <view class="modal-footer">
+        <view class="modal-btn cancel" bindtap="cancelJoinTeam">取消</view>
+        <view class="modal-btn confirm" bindtap="submitJoinTeam">加入</view>
+      </view>
+    </view>
+  </view>
+</view>
+

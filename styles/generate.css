@@ -1,0 +1,346 @@
+/**
+ * 文案生成页样式
+ * 对应原小程序: pages/generate/generate.wxss
+ */
+
+/* 生成页头部 */
+.generate-header {
+  padding: 20px 20px 30px;
+  background: linear-gradient(180deg, rgba(126, 34, 206, 0.2) 0%, transparent 100%);
+  position: relative;
+}
+
+.header-content {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.page-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--text-gold);
+  font-style: italic;
+}
+
+.page-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 6px;
+}
+
+/* VIP状态卡片 */
+.vip-status-card {
+  margin-top: 16px;
+  background: rgba(15, 15, 23, 0.6);
+  border: 1px solid rgba(194, 156, 74, 0.3);
+  padding: 14px;
+  border-radius: 4px;
+}
+
+.vip-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.rank-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.rank-value {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.energy-bar-container {
+  margin-top: 6px;
+}
+
+.energy-label {
+  font-size: 10px;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.energy-bar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.energy-fill {
+  height: 100%;
+  background: var(--metal-gradient);
+  box-shadow: 0 0 10px var(--primary-gold);
+  transition: width 0.3s ease;
+}
+
+/* 场景选择 */
+.scene-section {
+  padding: 20px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.header-text {
+  font-size: 14px;
+  color: var(--text-gold);
+  font-weight: bold;
+}
+
+.scene-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.scene-card {
+  background: rgba(15, 15, 23, 0.4);
+  border: 1px solid rgba(194, 156, 74, 0.1);
+  padding: 16px 12px;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.scene-card:hover {
+  border-color: rgba(194, 156, 74, 0.3);
+  transform: translateY(-2px);
+}
+
+.scene-card.selected {
+  background: rgba(126, 34, 206, 0.2);
+  border-color: var(--primary-purple);
+  box-shadow: inset 0 0 10px var(--primary-purple);
+}
+
+.scene-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.scene-name {
+  font-size: 12px;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* 表单区域 */
+.battle-form {
+  padding: 20px;
+}
+
+.form-header {
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(194, 156, 74, 0.1);
+  padding-bottom: 8px;
+}
+
+.text-area {
+  height: 150px;
+  padding: 12px;
+}
+
+.input-counter {
+  text-align: right;
+  font-size: 10px;
+  color: #64748b;
+  margin-top: 6px;
+}
+
+/* 风格选择 */
+.style-section {
+  padding: 0 20px 20px;
+}
+
+.style-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 4px 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.style-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.style-chip {
+  flex-shrink: 0;
+  padding: 8px 16px;
+  background: rgba(15, 15, 23, 0.4);
+  border: 1px solid rgba(194, 156, 74, 0.2);
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.style-chip:hover {
+  border-color: var(--primary-gold);
+}
+
+.style-chip.selected {
+  background: var(--primary-purple);
+  border-color: var(--primary-purple);
+  color: #fff;
+}
+
+/* 技能按钮 */
+.action-area {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.skill-btn {
+  width: 100%;
+  height: 50px;
+  border-radius: 25px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.skill-icon {
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.skill-btn:disabled {
+  opacity: 0.6;
+}
+
+/* 生成结果 */
+.result-section {
+  padding: 0 20px 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+.result-card {
+  padding: 16px;
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.result-title {
+  font-size: 13px;
+  color: var(--text-gold);
+  font-weight: bold;
+}
+
+.result-time {
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+.result-body {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.8;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  white-space: pre-wrap;
+}
+
+.result-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.result-actions .btn {
+  flex: 1;
+}
+
+/* 历史记录 */
+.history-section {
+  padding: 0 20px 20px;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 14px;
+  background: var(--bg-secondary);
+  border: 1px solid rgba(194, 156, 74, 0.1);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.history-item:hover {
+  border-color: rgba(194, 156, 74, 0.3);
+}
+
+.history-rank {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #9333ea 0%, #7e22ce 100%);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #fff;
+  font-weight: bold;
+  margin-right: 12px;
+}
+
+.history-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.history-title {
+  font-size: 12px;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history-time {
+  font-size: 10px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.history-arrow {
+  font-size: 10px;
+  color: var(--text-secondary);
+  margin-left: 8px;
+}

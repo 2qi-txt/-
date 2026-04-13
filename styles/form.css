@@ -1,0 +1,60 @@
+/**
+ * 通用表单页样式
+ * 用于: 资料编辑, 隐私政策, 帮助中心
+ */
+
+/* 页面头部 */
+.page-header {
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.page-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--text-gold);
+  font-style: italic;
+}
+
+/* 表单区域 */
+.form-section {
+  padding: 0 20px;
+}
+
+/* 头像预览 */
+.avatar-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.avatar-preview {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary-gold);
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+}
+
+.change-avatar {
+  font-size: 12px;
+}
+
+/* 文本输入 */
+.text-input {
+  font-size: 14px;
+}
+
+/* 操作按钮 */
+.actions {
+  display: flex;
+  gap: 12px;
+  padding: 20px;
+}
+
+.actions .btn {
+  flex: 1;
+}

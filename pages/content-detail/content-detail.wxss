@@ -1,0 +1,396 @@
+/* 内容详情页面样式 - 电竞风格 */
+.container {
+  background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 50%, var(--bg-start) 100%);
+  min-height: 100vh;
+}
+
+/* 页面标题 */
+.page-header {
+  background: var(--card-bg);
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  border-bottom: 1rpx solid var(--card-border);
+  backdrop-filter: blur(10rpx);
+  -webkit-backdrop-filter: blur(10rpx);
+  position: relative;
+}
+
+.page-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1rpx;
+  background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+  opacity: 0.5;
+}
+
+.page-title {
+  font-size: 36rpx;
+  font-weight: 800;
+  color: var(--primary-light);
+  letter-spacing: 2rpx;
+}
+
+.page-actions {
+  display: flex;
+  gap: 16rpx;
+}
+
+.page-actions .action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  padding: 16rpx 28rpx;
+  border-radius: 24rpx;
+  font-size: 26rpx;
+  border: none;
+  transition: all 0.2s ease;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: white;
+  flex: 0 0 auto;
+  box-shadow: 0 4rpx 12rpx var(--primary-glow);
+}
+
+.page-actions .action-btn:active {
+  transform: scale(0.97);
+  filter: brightness(1.1);
+}
+
+/* 内容区域 */
+.content-section {
+  padding: 30rpx;
+}
+
+.content-card {
+  background: var(--card-bg);
+  border-radius: 24rpx;
+  padding: 32rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.2);
+  margin-bottom: 30rpx;
+  border: 1rpx solid var(--card-border);
+  backdrop-filter: blur(10rpx);
+  -webkit-backdrop-filter: blur(10rpx);
+}
+
+.content-header {
+  margin-bottom: 24rpx;
+  padding-bottom: 24rpx;
+  border-bottom: 1rpx solid rgba(255,255,255,0.1);
+}
+
+.content-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16rpx;
+  line-height: 1.4;
+}
+
+.content-meta {
+  display: flex;
+  gap: 20rpx;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.meta-icon {
+  font-size: 20rpx;
+  color: var(--primary-light);
+}
+
+.meta-text {
+  font-size: 24rpx;
+  color: rgba(255,255,255,0.6);
+}
+
+.content-body {
+  margin-bottom: 24rpx;
+}
+
+.content-text {
+  font-size: 28rpx;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.8;
+  white-space: pre-wrap;
+}
+
+.content-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24rpx;
+  border-top: 1rpx solid rgba(255,255,255,0.1);
+}
+
+.content-stats {
+  display: flex;
+  gap: 20rpx;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+}
+
+.stat-icon {
+  font-size: 20rpx;
+  opacity: 0.6;
+}
+
+.stat-text {
+  font-size: 22rpx;
+  color: rgba(255,255,255,0.5);
+}
+
+.content-actions {
+  display: flex;
+  gap: 12rpx;
+}
+
+.action-btn.secondary {
+  background: rgba(255,255,255,0.1);
+  border: 1rpx solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.9);
+  padding: 12rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.action-btn.secondary:active {
+  background: rgba(255,255,255,0.15);
+  border-color: var(--primary);
+}
+
+.action-icon {
+  font-size: 20rpx;
+}
+
+.action-text {
+  font-size: 22rpx;
+}
+
+/* 相关推荐 */
+.recommend-section {
+  padding: 0 30rpx 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 800;
+  color: var(--primary-light);
+  margin-bottom: 20rpx;
+  letter-spacing: 2rpx;
+}
+
+.recommend-list {
+  display: grid;
+  gap: 16rpx;
+}
+
+.recommend-item {
+  background: var(--card-bg);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.2);
+  border: 1rpx solid var(--card-border);
+  backdrop-filter: blur(10rpx);
+  -webkit-backdrop-filter: blur(10rpx);
+}
+
+.recommend-item:active {
+  transform: scale(0.98);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.recommend-content {
+  flex: 1;
+}
+
+.recommend-title {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8rpx;
+}
+
+.recommend-desc {
+  font-size: 22rpx;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.4;
+}
+
+.recommend-arrow {
+  font-size: 24rpx;
+  color: var(--primary-light);
+}
+
+/* 评论区域 */
+.comment-section {
+  padding: 0 30rpx 40rpx;
+}
+
+.comment-list {
+  margin-bottom: 30rpx;
+}
+
+.comment-item {
+  display: flex;
+  gap: 16rpx;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid rgba(255,255,255,0.1);
+}
+
+.comment-item:last-child {
+  border-bottom: none;
+}
+
+.comment-avatar {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 32rpx;
+  overflow: hidden;
+  border: 2rpx solid var(--primary);
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 12rpx;
+}
+
+.comment-name {
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #fff;
+}
+
+.comment-time {
+  font-size: 20rpx;
+  color: rgba(255,255,255,0.5);
+}
+
+.comment-text {
+  font-size: 26rpx;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.6;
+  margin-bottom: 12rpx;
+}
+
+.comment-actions {
+  display: flex;
+  gap: 20rpx;
+}
+
+.comment-btn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 22rpx;
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+  padding: 8rpx 0;
+}
+
+.comment-btn:active {
+  color: var(--primary-light);
+}
+
+.comment-icon {
+  font-size: 20rpx;
+}
+
+.comment-count {
+  font-size: 20rpx;
+}
+
+/* 添加评论 */
+.add-comment {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  background: var(--card-bg);
+  border-radius: 16rpx;
+  padding: 20rpx;
+  border: 1rpx solid var(--card-border);
+  backdrop-filter: blur(10rpx);
+  -webkit-backdrop-filter: blur(10rpx);
+}
+
+.comment-input {
+  flex: 1;
+  background: rgba(0,0,0,0.3);
+  border: 1rpx solid var(--card-border);
+  border-radius: 24rpx;
+  padding: 16rpx 24rpx;
+  font-size: 26rpx;
+  color: #fff;
+}
+
+.comment-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 16rpx var(--primary-glow);
+}
+
+.comment-submit {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: white;
+  border: none;
+  padding: 16rpx 28rpx;
+  border-radius: 24rpx;
+  font-size: 24rpx;
+  font-weight: 600;
+  box-shadow: 0 4rpx 12rpx var(--primary-glow);
+}
+
+.comment-submit:active {
+  transform: scale(0.95);
+  filter: brightness(1.1);
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .content-meta {
+    flex-direction: column;
+    gap: 12rpx;
+  }
+  
+  .content-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20rpx;
+  }
+  
+  .content-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,190 @@
+<!--pages/smart-templates/smart-templates.wxml-->
+<view class="container {{themeClass}}">
+  <!-- 标题栏 -->
+  <view class="header">
+    <view class="title">智能模板推荐</view>
+    <view class="subtitle">基于您的偏好和热门趋势</view>
+  </view>
+
+  <!-- 标签页 -->
+  <view class="tab-bar">
+    <view class="tab-item {{currentTab === 'recommend' ? 'active' : ''}}" 
+          data-tab="recommend" bindtap="switchTab">
+      个性推荐
+    </view>
+    <view class="tab-item {{currentTab === 'hot' ? 'active' : ''}}" 
+          data-tab="hot" bindtap="switchTab">
+      热门模板
+    </view>
+    <view class="tab-item {{currentTab === 'seasonal' ? 'active' : ''}}" 
+          data-tab="seasonal" bindtap="switchTab">
+      季节推荐
+    </view>
+    <view class="tab-item {{currentTab === 'search' ? 'active' : ''}}" 
+          data-tab="search" bindtap="switchTab">
+      搜索
+    </view>
+  </view>
+
+  <!-- 个性化推荐 -->
+  <view class="content" wx:if="{{currentTab === 'recommend'}}">
+    <!-- 用户资料卡片 -->
+    <view class="profile-card">
+      <view class="profile-header">
+        <view class="profile-info">
+          <text class="major">{{userProfile.major}}</text>
+          <text class="grade">{{userProfile.grade}}</text>
+        </view>
+        <view class="update-btn" bindtap="updateUserProfile">更新资料</view>
+      </view>
+      <view class="interests">
+        <text class="label">兴趣标签：</text>
+        <view class="tags">
+          <text class="tag" wx:for="{{userProfile.interests}}" wx:key="index">{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 个性化推荐列表 -->
+    <view class="section">
+      <view class="section-title">
+        <text>为您推荐</text>
+        <view class="refresh-btn" bindtap="refreshRecommendations">🔄</view>
+      </view>
+      
+      <view class="template-list">
+        <view class="template-card personalized" 
+              wx:for="{{personalizedTemplates}}" 
+              wx:key="id"
+              data-template="{{item}}"
+              bindtap="selectTemplate">
+          <view class="template-header">
+            <text class="template-title">{{item.title}}</text>
+            <view class="match-score">{{item.matchScore}}%匹配</view>
+          </view>
+          <view class="template-content">{{item.content}}</view>
+          <view class="template-footer">
+            <text class="reason">{{item.reason}}</text>
+            <view class="actions">
+              <view class="action-btn" bindtap="favoriteTemplate" data-template="{{item}}" catchtap="true">❤️</view>
+              <view class="action-btn" bindtap="shareTemplate" data-template="{{item}}" catchtap="true">📤</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 热门模板 -->
+  <view class="content" wx:if="{{currentTab === 'hot'}}">
+    <view class="section">
+      <view class="section-title">🔥 热门模板</view>
+      
+      <view class="template-list">
+        <view class="template-card hot" 
+              wx:for="{{hotTemplates}}" 
+              wx:key="id"
+              data-template="{{item}}"
+              bindtap="selectTemplate">
+          <view class="template-header">
+            <text class="template-title">{{item.title}}</text>
+            <view class="hot-badge">🔥 热门</view>
+          </view>
+          <view class="template-content">{{item.content}}</view>
+          <view class="template-footer">
+            <view class="stats">
+              <text class="usage">使用 {{item.usage}} 次</text>
+              <text class="rating">⭐ {{item.rating}}</text>
+            </view>
+            <view class="actions">
+              <view class="action-btn" bindtap="favoriteTemplate" data-template="{{item}}" catchtap="true">❤️</view>
+              <view class="action-btn" bindtap="shareTemplate" data-template="{{item}}" catchtap="true">📤</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 季节推荐 -->
+  <view class="content" wx:if="{{currentTab === 'seasonal'}}">
+    <view class="section">
+      <view class="section-title">🍂 季节推荐</view>
+      
+      <view class="template-list">
+        <view class="template-card seasonal" 
+              wx:for="{{seasonalTemplates}}" 
+              wx:key="id"
+              data-template="{{item}}"
+              bindtap="selectTemplate">
+            <view class="template-header">
+              <text class="template-title">{{item.title}}</text>
+              <view class="seasonal-badge">🍂 季节推荐</view>
+            </view>
+          <view class="template-content">{{item.content}}</view>
+          <view class="template-footer">
+            <view class="stats">
+              <text class="usage">使用 {{item.usage}} 次</text>
+              <text class="rating">⭐ {{item.rating}}</text>
+            </view>
+            <view class="actions">
+              <view class="action-btn" bindtap="favoriteTemplate" data-template="{{item}}" catchtap="true">❤️</view>
+              <view class="action-btn" bindtap="shareTemplate" data-template="{{item}}" catchtap="true">📤</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 搜索页面 -->
+      <view class="content" wx:if="{{currentTab === 'search'}}">
+        <view class="search-section">
+          <view class="search-bar">
+            <input class="search-input" 
+               placeholder="搜索模板标题、内容或标签..." 
+               value="{{searchKeyword}}"
+               bindinput="onSearchInput"
+               confirm-type="search"
+               bindconfirm="performSearch" />
+            <view class="search-btn" bindtap="performSearch">🔍</view>
+          </view>
+      
+      <view class="search-results" wx:if="{{searchResults.length > 0}}">
+        <view class="template-list">
+          <view class="template-card" 
+                wx:for="{{searchResults}}" 
+                wx:key="id"
+                data-template="{{item}}"
+                bindtap="selectTemplate">
+            <view class="template-header">
+              <text class="template-title">{{item.title}}</text>
+              <view class="category-badge">{{item.category}}</view>
+            </view>
+            <view class="template-content">{{item.content}}</view>
+            <view class="template-footer">
+              <view class="tags">
+                <text class="tag" wx:for="{{item.tags}}" wx:key="index" wx:for-item="tag">{{tag}}</text>
+              </view>
+              <view class="actions">
+                <view class="action-btn" bindtap="favoriteTemplate" data-template="{{item}}" catchtap="true">❤️</view>
+                <view class="action-btn" bindtap="shareTemplate" data-template="{{item}}" catchtap="true">📤</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      
+      <view class="empty-state" wx:if="{{searchResults.length === 0 && searchKeyword}}">
+        <text class="empty-text">没有找到相关模板</text>
+        <text class="empty-hint">试试其他关键词</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{isSearching}}">
+    <text>搜索中...</text>
+  </view>
+</view>
+

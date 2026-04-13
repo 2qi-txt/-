@@ -1,0 +1,31 @@
+<view class="container {{currentTheme}}">
+  <view class="page-header">
+    <view class="page-title">编辑资料</view>
+  </view>
+
+  <view class="form-section">
+    <view class="avatar-card">
+      <view class="avatar-wrapper">
+        <image src="{{form.avatarUrl || 'data:image/gif;base64,R0lGODlhAQABAAAAACw='}}" class="avatar-preview" mode="aspectFill" binderror="onAvatarError"></image>
+      </view>
+      <button class="change-avatar-btn" bindtap="chooseAvatar">更换头像</button>
+    </view>
+
+    <view class="form-card">
+      <view class="form-item">
+        <view class="form-label">召唤师名称</view>
+        <input class="text-input" placeholder="请输入昵称" placeholder-style="color:#9ca3af" value="{{form.nickName}}" bindinput="onInput" data-field="nickName" confirm-type="done" />
+      </view>
+
+      <view class="form-item">
+        <view class="form-label">个人简介</view>
+        <textarea class="textarea" placeholder="一句话介绍自己" placeholder-style="color:#9ca3af" value="{{form.desc}}" bindinput="onInput" data-field="desc" maxlength="120"></textarea>
+      </view>
+    </view>
+  </view>
+
+  <view class="actions">
+    <button class="btn-cancel" bindtap="cancelEdit">取消</button>
+    <button class="btn-save" bindtap="saveProfile">保存</button>
+  </view>
+</view>

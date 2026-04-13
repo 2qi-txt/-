@@ -1,0 +1,178 @@
+<view class="container page-enter {{currentTheme}}">
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <view class="header-glow"></view>
+    <view class="header-content">
+      <view class="page-title-wrap">
+        <view class="page-title">峡谷文案优化</view>
+        <view class="page-subtitle">KING'S GLORY STYLE</view>
+      </view>
+    </view>
+    
+    <view class="vip-status-card glass-card">
+      <view class="status-row">
+        <view class="status-item">
+          <text class="status-label">段位</text>
+          <text class="status-value rank {{vipStatus && vipStatus.isVip ? 'gold' : ''}}">{{vipStatus && vipStatus.isVip ? '最强王者' : '永恒钻石'}}</text>
+        </view>
+        <view class="status-divider"></view>
+        <view class="status-item">
+          <text class="status-label">能量</text>
+          <view class="energy-wrap">
+            <text class="status-value energy">{{generateRemaining}}</text>
+            <text class="energy-max">/10</text>
+          </view>
+        </view>
+      </view>
+      <view class="energy-bar">
+        <view class="energy-track">
+          <view class="energy-fill" style="width: {{generateRemaining * 10}}%"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 人物口吻选择器 -->
+  <view class="section character-section">
+    <view class="section-header">
+      <view class="section-title-wrap">
+        <text class="section-num">01</text>
+        <text class="section-title">人物口吻</text>
+      </view>
+      <text class="section-hint">选择生成风格</text>
+    </view>
+    <scroll-view class="character-scroll" scroll-x enable-flex>
+      <view class="character-grid">
+        <view class="character-card {{selectedCharacter === 'libai' ? 'active' : ''}}" bindtap="selectCharacter" data-character="libai">
+          <view class="char-avatar libai-avatar">
+            <text class="char-initial">李</text>
+            <view class="char-ring libai-ring"></view>
+          </view>
+          <text class="char-name">李白</text>
+          <text class="char-style">潇洒飘逸·诗词歌赋</text>
+        </view>
+        <view class="character-card {{selectedCharacter === 'diaochan' ? 'active' : ''}}" bindtap="selectCharacter" data-character="diaochan">
+          <view class="char-avatar diaochan-avatar">
+            <text class="char-initial">貂</text>
+            <view class="char-ring diaochan-ring"></view>
+          </view>
+          <text class="char-name">貂蝉</text>
+          <text class="char-style">柔美动人·婉约派</text>
+        </view>
+        <view class="character-card {{selectedCharacter === 'lan' ? 'active' : ''}}" bindtap="selectCharacter" data-character="lan">
+          <view class="char-avatar lan-avatar">
+            <text class="char-initial">澜</text>
+            <view class="char-ring lan-ring"></view>
+          </view>
+          <text class="char-name">澜</text>
+          <text class="char-style">冷酷神秘·简洁有力</text>
+        </view>
+        <view class="character-card {{selectedCharacter === 'caiwenji' ? 'active' : ''}}" bindtap="selectCharacter" data-character="caiwenji">
+          <view class="char-avatar caiwenji-avatar">
+            <text class="char-initial">蔡</text>
+            <view class="char-ring caiwenji-ring"></view>
+          </view>
+          <text class="char-name">蔡文姬</text>
+          <text class="char-style">可爱萌系·温暖治愈</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 场景选择 -->
+  <view class="section scene-section">
+    <view class="section-header">
+      <view class="section-title-wrap">
+        <text class="section-num">02</text>
+        <text class="section-title">作战场景</text>
+      </view>
+    </view>
+    <view class="scene-tabs">
+      <view class="scene-tab {{currentTab === 'official' ? 'active' : ''}}" bindtap="switchTab" data-tab="official">
+        <text>官方对线</text>
+      </view>
+      <view class="scene-tab {{currentTab === 'social' ? 'active' : ''}}" bindtap="switchTab" data-tab="social">
+        <text>社交团战</text>
+      </view>
+    </view>
+    
+    <view class="scene-grid-wrap" wx:if="{{currentTab === 'official'}}">
+      <view class="scene-card {{selectedScene === 'notice' ? 'selected' : ''}}" bindtap="selectScene" data-scene="notice">
+        <view class="scene-icon">📢</view>
+        <text class="scene-name">通知公告</text>
+      </view>
+      <view class="scene-card {{selectedScene === 'announcement' ? 'selected' : ''}}" bindtap="selectScene" data-scene="announcement">
+        <view class="scene-icon">📋</view>
+        <text class="scene-name">活动预告</text>
+      </view>
+      <view class="scene-card {{selectedScene === 'club' ? 'selected' : ''}}" bindtap="selectScene" data-scene="club">
+        <view class="scene-icon">🎭</view>
+        <text class="scene-name">社团动态</text>
+      </view>
+    </view>
+
+    <view class="scene-grid-wrap" wx:if="{{currentTab === 'social'}}">
+      <view class="scene-card {{selectedScene === 'xiaohongshu' ? 'selected' : ''}}" bindtap="selectScene" data-scene="xiaohongshu">
+        <view class="scene-icon">📱</view>
+        <text class="scene-name">小红书</text>
+      </view>
+      <view class="scene-card {{selectedScene === 'wechat' ? 'selected' : ''}}" bindtap="selectScene" data-scene="wechat">
+        <view class="scene-icon">💬</view>
+        <text class="scene-name">朋友圈</text>
+      </view>
+      <view class="scene-card {{selectedScene === 'douyin' ? 'selected' : ''}}" bindtap="selectScene" data-scene="douyin">
+        <view class="scene-icon">🎵</view>
+        <text class="scene-name">抖音</text>
+      </view>
+      <view class="scene-card {{selectedScene === 'trade' ? 'selected' : ''}}" bindtap="selectScene" data-scene="trade">
+        <view class="scene-icon">🛒</view>
+        <text class="scene-name">二手交易</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 生成表单 -->
+  <view class="section form-section glass-card {{selectedScene ? 'show' : ''}}">
+    <view class="form-inner">
+      <view class="input-group">
+        <text class="input-label">作战主题</text>
+        <view class="input-wrap">
+          <input class="frost-input" placeholder="输入需要优化的文案..." value="{{formData.title}}" bindinput="onInputChange" data-field="title" placeholder-class="placeholder" />
+        </view>
+      </view>
+
+      <view class="input-group">
+        <text class="input-label">情报补充</text>
+        <view class="input-wrap">
+          <textarea class="frost-textarea" placeholder="补充详细对线情报..." value="{{formData.description}}" bindinput="onInputChange" data-field="description" confirm-type="done" placeholder-class="placeholder"></textarea>
+        </view>
+      </view>
+
+      <view class="action-row">
+        <button class="btn-generate" bindtap="generateContent" disabled="{{isGenerating}}">
+          <view class="btn-glow"></view>
+          <text class="btn-text">{{isGenerating ? '正在施法...' : '开始优化'}}</text>
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 生成结果 -->
+  <view class="section result-section {{generatedContent ? 'show' : ''}}">
+    <view class="result-header">
+      <text class="result-title">情报摘要</text>
+    </view>
+    <view class="result-card glass-card">
+      <view class="result-glow"></view>
+      <view class="result-body">{{generatedContent}}</view>
+      <view class="result-actions">
+        <button class="btn-action btn-copy" bindtap="copyContent">
+          <text>复制文案</text>
+        </button>
+        <button class="btn-action btn-save" bindtap="saveContent">
+          <text>保存战报</text>
+        </button>
+      </view>
+    </view>
+  </view>
+</view>

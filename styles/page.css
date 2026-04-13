@@ -1,0 +1,216 @@
+/**
+ * 生成页通用样式
+ * 补充生成页需要的额外样式
+ */
+
+/* Tab菜单 */
+.scene-menu {
+  padding: 0 20px;
+  margin-bottom: 16px;
+}
+
+.menu-tabs {
+  display: flex;
+  gap: 8px;
+  background: rgba(15, 15, 23, 0.4);
+  padding: 4px;
+  border-radius: 8px;
+}
+
+.menu-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.menu-tab.active {
+  background: var(--primary-purple);
+}
+
+.menu-tab .tab-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: bold;
+}
+
+.menu-tab.active .tab-text {
+  color: #fff;
+}
+
+.menu-tab .tab-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--primary-gold);
+  transition: width 0.2s;
+}
+
+.menu-tab.active .tab-indicator {
+  width: 30px;
+}
+
+/* 内容区域 */
+.content-area {
+  padding: 0 20px;
+}
+
+/* 场景网格 */
+.scene-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.scene-card {
+  background: rgba(15, 15, 23, 0.4);
+  border: 1px solid rgba(194, 156, 74, 0.1);
+  padding: 16px 8px;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.scene-card:hover {
+  border-color: rgba(194, 156, 74, 0.3);
+  transform: translateY(-2px);
+}
+
+.scene-card.selected {
+  background: rgba(126, 34, 206, 0.2);
+  border-color: var(--primary-purple);
+  box-shadow: inset 0 0 10px var(--primary-purple);
+}
+
+.card-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.card-name {
+  font-size: 12px;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* 表单 */
+.battle-form {
+  padding: 20px;
+}
+
+.battle-form.hidden {
+  display: none;
+}
+
+.form-header {
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(194, 156, 74, 0.1);
+  padding-bottom: 8px;
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+
+.label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.text-area {
+  height: 120px;
+  padding: 12px;
+}
+
+/* 技能按钮 */
+.action-area {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.skill-btn {
+  width: 100%;
+  height: 50px;
+  border-radius: 25px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.skill-icon {
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.skill-btn:disabled {
+  opacity: 0.6;
+}
+
+/* 结果区域 */
+.result-section {
+  padding: 0 20px 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.header-text {
+  font-size: 14px;
+  color: var(--text-gold);
+  font-weight: bold;
+}
+
+.result-card {
+  padding: 16px;
+}
+
+.result-body {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.8;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  white-space: pre-wrap;
+}
+
+.result-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.result-actions .btn {
+  flex: 1;
+}
+
+/* 隐藏类 */
+.hidden {
+  display: none !important;
+}

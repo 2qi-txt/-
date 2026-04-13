@@ -1,0 +1,102 @@
+<view class="container page-enter {{currentTheme}}">
+  <!-- 竞技优化标题 -->
+  <view class="page-header esports-header">
+    <view class="header-content">
+      <view class="page-title">峡谷精炼</view>
+      <view class="page-desc">精炼你的文案属性，直达最强王者</view>
+    </view>
+    
+    <view class="vip-status-card">
+      <view class="vip-info">
+        <text class="rank-label">段位：</text>
+        <text class="rank-value {{vipStatus && vipStatus.isVip ? 'gold-text' : ''}}">{{vipStatus && vipStatus.isVip ? '最强王者' : '永恒钻石'}}</text>
+      </view>
+      <view class="energy-bar-container">
+        <view class="energy-label">优化能量：{{optimizeRemaining}}/10</view>
+        <view class="energy-bar">
+          <view class="energy-fill" style="width: {{optimizeRemaining * 10}}%"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 输入区域 -->
+  <view class="battle-form card">
+    <view class="form-header">
+      <text class="gold-text">待精炼情报</text>
+    </view>
+    <textarea class="input text-area" placeholder="粘贴需要精炼的文案..." 
+              value="{{originalText}}" bindinput="onTextInput" maxlength="1000">
+    </textarea>
+    <view class="input-counter">{{originalText.length}}/1000</view>
+  </view>
+
+  <!-- 优化选项 -->
+  <view class="options-section">
+    <view class="section-header">
+      <text class="header-text">精炼方向</text>
+    </view>
+    
+    <view class="style-grid">
+      <view class="scene-card {{optimizeStyle === 'professional' ? 'selected' : ''}}" 
+            bindtap="selectStyle" data-style="professional">
+        <view class="card-icon">💼</view>
+        <view class="card-name">专业</view>
+      </view>
+      <view class="scene-card {{optimizeStyle === 'creative' ? 'selected' : ''}}" 
+            bindtap="selectStyle" data-style="creative">
+        <view class="card-icon">🎨</view>
+        <view class="card-name">创意</view>
+      </view>
+      <view class="scene-card {{optimizeStyle === 'emotional' ? 'selected' : ''}}" 
+            bindtap="selectStyle" data-style="emotional">
+        <view class="card-icon">❤️</view>
+        <view class="card-name">情感</view>
+      </view>
+      <view class="scene-card {{optimizeStyle === 'humorous' ? 'selected' : ''}}" 
+            bindtap="selectStyle" data-style="humorous">
+        <view class="card-icon">😄</view>
+        <view class="card-name">幽默</view>
+      </view>
+    </view>
+
+    <!-- 释放按钮 -->
+    <view class="action-area">
+      <button class="skill-btn" bindtap="optimizeContent" disabled="{{isOptimizing}}">
+        <view class="skill-icon">✨</view>
+        <text>{{isOptimizing ? '精炼中...' : '开始精炼'}}</text>
+      </button>
+    </view>
+  </view>
+
+  <!-- 结果显示 -->
+  <view class="result-section" wx:if="{{optimizedContent}}">
+    <view class="section-header">
+      <text class="header-text">精炼战报</text>
+    </view>
+    <view class="result-card card">
+      <view class="result-body">{{optimizedContent}}</view>
+      <view class="result-actions">
+        <button class="btn btn-secondary" bindtap="copyOptimized">复制战报</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 历史记录 -->
+  <view class="history-section" wx:if="{{optimizationHistory.length > 0}}">
+    <view class="section-header">
+      <text class="header-text">优化记录</text>
+    </view>
+    <view class="history-list">
+      <view class="history-item" wx:for="{{optimizationHistory}}" wx:key="id" 
+            bindtap="loadHistory" data-item="{{item}}">
+        <view class="history-rank">精炼</view>
+        <view class="history-info">
+          <view class="history-title">{{item.title}}</view>
+          <view class="history-time">{{item.time}}</view>
+        </view>
+        <view class="history-arrow">▶</view>
+      </view>
+    </view>
+  </view>
+</view>

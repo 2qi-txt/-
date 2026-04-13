@@ -1,0 +1,64 @@
+<view class="container {{themeClass}}">
+  <view class="header">
+    <view class="title">意见反馈</view>
+    <view class="subtitle">我们期待你的建议与问题</view>
+  </view>
+
+  <view class="card">
+    <view class="form-item">
+      <view class="label">反馈类型</view>
+      <picker mode="selector" range="{{typeOptions}}" value="{{typeIndex}}" bindchange="onTypeChange">
+        <view class="picker">{{typeOptions[typeIndex]}}</view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <view class="label">标题（可选）</view>
+      <input class="input" placeholder="简要概括" placeholder-style="color:#9ca3af;font-size:24rpx;line-height:36rpx;" value="{{title}}" bindinput="onInput" data-field="title" />
+      <view class="hint">例如：功能建议、页面显示异常</view>
+    </view>
+
+    <view class="form-item">
+      <view class="label">详细描述</view>
+      <textarea class="textarea" placeholder="请详细描述问题或建议" placeholder-style="color:#9ca3af;font-size:24rpx;line-height:36rpx;" value="{{content}}" bindinput="onInput" data-field="content" maxlength="800" />
+      <view class="hint">包含重现步骤、预期与实际；不少于 10 字</view>
+    </view>
+
+    <view class="form-item">
+      <view class="label">联系方式（可选）</view>
+      <input class="input" placeholder="微信号或邮箱" placeholder-style="color:#9ca3af;font-size:24rpx;line-height:36rpx;" value="{{contact}}" bindinput="onInput" data-field="contact" />
+      <view class="hint">便于我们联系你，选填</view>
+    </view>
+
+    <view class="form-item">
+      <view class="label">截图（可选，最多3张）</view>
+      <view class="images">
+        <image wx:for="{{images}}" wx:key="index" src="{{item}}" class="img" mode="aspectFill" bindtap="previewImage" data-index="{{index}}" />
+        <view class="img add" wx:if="{{images.length < 3}}" bindtap="chooseImage">＋</view>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <view class="label">相关页面（可选）</view>
+      <picker mode="selector" range="{{pageOptions}}" value="{{pageIndex}}" bindchange="onPageChange">
+        <view class="picker">{{pageIndex>=0?pageOptions[pageIndex]:'未选择'}}</view>
+      </picker>
+    </view>
+
+    <view class="actions">
+      <button class="btn primary" bindtap="submitFeedback">提交反馈</button>
+      <button class="btn secondary" bindtap="resetForm">清空</button>
+    </view>
+  </view>
+
+  <view class="section" wx:if="{{recent.length>0}}">
+    <view class="section-title">最近提交</view>
+    <view class="list">
+      <view class="item" wx:for="{{recent}}" wx:key="id">
+        <view class="item-title">{{item.title || item.type}}</view>
+        <view class="item-desc">{{item.content}}</view>
+        <view class="item-meta">{{item.time}} · 状态：{{item.status || '待处理'}} · {{item.page || '未指定页面'}}</view>
+      </view>
+    </view>
+  </view>
+</view>

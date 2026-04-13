@@ -1,0 +1,32 @@
+/**
+ * 文案优化页样式
+ * 对应原小程序: pages/optimize/optimize.wxss
+ */
+
+/* 优化选项 - 与生成页类似 */
+.style-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+/* 生成结果区域 */
+.result-body {
+  font-size: 14px;
+  color: #e2e8f0;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  white-space: pre-wrap;
+}
+
+.result-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.result-actions .btn {
+  flex: 1;
+}

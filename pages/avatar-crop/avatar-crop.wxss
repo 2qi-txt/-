@@ -1,0 +1,106 @@
+.page-header {
+  background: linear-gradient(135deg, var(--secondary-color), #58D68D);
+  padding: 40rpx 30rpx;
+  color: white;
+  text-align: center;
+}
+
+.container.light-theme .page-header {
+  background: linear-gradient(135deg, #eaf0ff 0%, #fff5f5 100%);
+  color: #1f2937;
+}
+
+.dark-theme .page-header {
+  background: linear-gradient(135deg, #0ea5e9 0%, #22c55e 100%);
+  color: #e5e7eb;
+}
+
+.page-title {
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.crop-section {
+  padding: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.crop-area {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12rpx;
+  background: var(--bg-color);
+}
+
+.ring-overlay {
+  position: absolute;
+  border: 4rpx solid #f59e0b;
+  border-radius: 9999rpx;
+  box-shadow: 0 0 0 9999px rgba(0,0,0,0.5);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.image-movable {
+  width: auto;
+  height: auto;
+}
+
+.gestures {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.crop-image {
+  display: block;
+  position: absolute;
+  z-index: 1;
+}
+
+.hint {
+  padding: 8rpx 30rpx;
+  font-size: 24rpx;
+  color: #7f8c8d;
+  text-align: center;
+}
+
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(0,0,0,0) 49%, rgba(0,0,0,0.55) 51%);
+  pointer-events: none;
+}
+
+.hidden-canvas {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
+.actions {
+  padding: 20rpx 30rpx;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16rpx;
+}
+
+.zoom-controls {
+  padding: 10rpx 30rpx;
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.zoom-btn {
+  padding: 12rpx 20rpx;
+  font-size: 26rpx;
+}

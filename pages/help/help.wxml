@@ -1,0 +1,56 @@
+<view class="container {{themeClass}}">
+  <view class="header">
+    <view class="title">帮助中心</view>
+    <view class="subtitle">快速上手与常见问题</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">快速上手</view>
+    <view class="list">
+      <view class="list-item">首页选择“文案生成”或“文案优化”。</view>
+      <view class="list-item">填写标题与关键词，选择风格与长度。</view>
+      <view class="list-item">点击生成/优化，复制结果或保存收藏。</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">额度与VIP</view>
+    <view class="paragraph">每日额度会在次日自动重置。开通VIP可提升每日配额并解锁更多风格与长度选项。</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">常见问题</view>
+    <view class="faq">
+      <view class="faq-item">
+        <view class="q">生成失败怎么办？</view>
+        <view class="a">请检查网络是否正常，确保后端服务已启动。如果仍失败，前往反馈页提交问题。</view>
+      </view>
+      <view class="faq-item">
+        <view class="q">如何提升生成质量？</view>
+        <view class="a">补充更具体的关键词和场景，选择合适的平台风格；VIP用户可使用更强模型与更长上下文。</view>
+      </view>
+      <view class="faq-item">
+        <view class="q">为什么提示额度不足？</view>
+        <view class="a">当天次数已用尽，稍后再试或开通VIP提升配额。</view>
+      </view>
+      <view class="faq-item">
+        <view class="q">如何报告Bug或提出建议？</view>
+        <view class="a">进入“设置→意见反馈”，填写描述并可附截图，我们会及时处理。</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">进阶功能</view>
+    <view class="list">
+      <view class="list-item">图片生成：在“文案生成”选择图片场景，识别图片并自动填充关键词。</view>
+      <view class="list-item">智能模板：在“智能模板”页按推荐或搜索选择模板并跳转生成。</view>
+      <view class="list-item">收藏与最近：生成/优化后可保存收藏，首页可查看最近使用。</view>
+    </view>
+  </view>
+
+  <view class="actions">
+    <button class="btn" bindtap="goToFeedback">意见反馈</button>
+    <button class="btn secondary" bindtap="goBack">返回设置</button>
+  </view>
+</view>

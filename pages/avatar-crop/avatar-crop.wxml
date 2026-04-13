@@ -1,0 +1,30 @@
+<view class="container {{themeClass}}">
+  <view class="page-header">
+    <view class="page-title">裁剪头像</view>
+  </view>
+
+  <view class="crop-section">
+    <view class="crop-area" style="width: {{areaSize}}px; height: {{areaSize}}px;">
+      <movable-area style="width: {{areaSize}}px; height: {{areaSize}}px;">
+        <movable-view class="image-movable" direction="all" out-of-bounds="true" inertia="false" damping="140" x="{{x}}" y="{{y}}" bindchange="onMoveChange" style="width: {{dispW}}px; height: {{dispH}}px;">
+          <image src="{{src}}" class="crop-image" mode="widthFix" style="width: {{dispW}}px;" />
+        </movable-view>
+      </movable-area>
+      <view class="ring-overlay" style="width: {{circleSize}}px; height: {{circleSize}}px; left: {{(areaSize-circleSize)/2}}px; top: {{(areaSize-circleSize)/2}}px;"></view>
+    </view>
+    <canvas canvas-id="cropCanvas" class="hidden-canvas" style="width: {{circleSize}}px; height: {{circleSize}}px;"></canvas>
+  </view>
+
+  <view class="hint">拖动图片、缩放图片，将需要的部分放入圆圈内</view>
+
+  <view class="zoom-controls">
+    <button class="btn btn-secondary zoom-btn" bindtap="zoomOut">－</button>
+    <slider min="100" max="300" step="1" value="{{scale * 100}}" bindchange="onScaleSlider" show-value />
+    <button class="btn btn-secondary zoom-btn" bindtap="zoomIn">＋</button>
+  </view>
+
+  <view class="actions">
+    <button class="btn btn-secondary" bindtap="cancel">取消</button>
+    <button class="btn btn-primary" bindtap="confirmCrop">确定</button>
+  </view>
+</view>

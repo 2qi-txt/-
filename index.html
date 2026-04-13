@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>峡谷文案工坊</title>
+    
+    <!-- ==================== 全局样式 ==================== -->
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/app.css">
+    
+    <!-- ==================== 页面样式 ==================== -->
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/page.css">
+    <link rel="stylesheet" href="styles/generate.css">
+    <link rel="stylesheet" href="styles/optimize.css">
+    <link rel="stylesheet" href="styles/settings.css">
+    <link rel="stylesheet" href="styles/vip.css">
+    <link rel="stylesheet" href="styles/feedback.css">
+    <link rel="stylesheet" href="styles/form.css">
+    <link rel="stylesheet" href="styles/static.css">
+</head>
+<body>
+    <!-- ==================== App 容器 ==================== -->
+    <div id="app" class="app-container">
+        <!-- 页面容器 -->
+        <div id="page-container" class="page-container page-enter"></div>
+        
+        <!-- TabBar 导航 -->
+        <nav id="tab-bar" class="tab-bar">
+            <div class="tab-item active" data-page="index">
+                <span class="tab-icon">⚔️</span>
+                <span class="tab-text">战场</span>
+            </div>
+            <div class="tab-item" data-page="generate">
+                <span class="tab-icon">📝</span>
+                <span class="tab-text">备战</span>
+            </div>
+            <div class="tab-item" data-page="optimize">
+                <span class="tab-icon">🛡️</span>
+                <span class="tab-text">竞技</span>
+            </div>
+            <div class="tab-item" data-page="settings">
+                <span class="tab-icon">👤</span>
+                <span class="tab-text">个人</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- ==================== 模态框容器 ==================== -->
+    <div id="modal-container" class="modal-container"></div>
+
+    <!-- Toast 提示 -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Loading 遮罩 -->
+    <div id="loading-mask" class="loading-mask">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">加载中...</div>
+    </div>
+
+    <!-- ==================== 核心服务 ==================== -->
+    <script src="js/storage.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/api.js"></script>
+    
+    <!-- ==================== 页面组件 ==================== -->
+    <script src="js/pages/index.js"></script>
+    <script src="js/pages/generate.js"></script>
+    <script src="js/pages/optimize.js"></script>
+    <script src="js/pages/settings.js"></script>
+    <script src="js/pages/vip.js"></script>
+    <script src="js/pages/profile-edit.js"></script>
+    <script src="js/pages/feedback.js"></script>
+    <script src="js/pages/privacy.js"></script>
+    <script src="js/pages/help.js"></script>
+    <script src="js/pages/placeholder.js"></script>
+    
+    <!-- ==================== 路由与主程序 ==================== -->
+    <script src="js/router.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

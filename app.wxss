@@ -1,0 +1,322 @@
+/* ============================================
+   全局CSS变量 - 电竞主题系统
+   ============================================ */
+
+/* 默认主题 - 李白·墨韵剑气 */
+page,
+.skin-libai {
+  --primary: #6366f1;
+  --primary-light: #818cf8;
+  --primary-glow: rgba(99, 102, 241, 0.5);
+  --accent: #c4b5fd;
+  --bg-start: #0a0a12;
+  --bg-end: #0d0d18;
+  --card-bg: rgba(30, 30, 50, 0.6);
+  --card-border: rgba(99, 102, 241, 0.3);
+  --btn-generate: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%);
+  --btn-copy: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  --btn-default: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  --btn-glow-generate: rgba(220, 38, 38, 0.4);
+  --btn-glow-copy: rgba(37, 99, 235, 0.3);
+  --transition-theme: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 貂蝉·幻舞流光 */
+.skin-diaochan {
+  --primary: #ec4899;
+  --primary-light: #f472b6;
+  --primary-glow: rgba(236, 72, 153, 0.5);
+  --accent: #fbcfe8;
+  --bg-start: #1a0a14;
+  --bg-end: #2d1f3d;
+  --card-bg: rgba(50, 30, 40, 0.6);
+  --card-border: rgba(236, 72, 153, 0.3);
+  --btn-generate: linear-gradient(135deg, #ec4899 0%, #db2777 50%, #be185d 100%);
+  --btn-copy: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  --btn-default: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  --btn-glow-generate: rgba(236, 72, 153, 0.4);
+  --btn-glow-copy: rgba(37, 99, 235, 0.3);
+  --transition-theme: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 澜·深海暗影 */
+.skin-lan {
+  --primary: #0891b2;
+  --primary-light: #06b6d4;
+  --primary-glow: rgba(8, 145, 178, 0.5);
+  --accent: #a5f3fc;
+  --bg-start: #061018;
+  --bg-end: #0c1a2e;
+  --card-bg: rgba(20, 40, 50, 0.6);
+  --card-border: rgba(8, 145, 178, 0.3);
+  --btn-generate: linear-gradient(135deg, #0891b2 0%, #0e7490 50%, #155e75 100%);
+  --btn-copy: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  --btn-default: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  --btn-glow-generate: rgba(8, 145, 178, 0.4);
+  --btn-glow-copy: rgba(37, 99, 235, 0.3);
+  --transition-theme: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 蔡文姬·萌音跃动 */
+.skin-caiwenji {
+  --primary: #f59e0b;
+  --primary-light: #fbbf24;
+  --primary-glow: rgba(245, 158, 11, 0.5);
+  --accent: #fef3c7;
+  --bg-start: #1a1008;
+  --bg-end: #2d2410;
+  --card-bg: rgba(50, 40, 20, 0.6);
+  --card-border: rgba(245, 158, 11, 0.3);
+  --btn-generate: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
+  --btn-copy: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  --btn-default: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  --btn-glow-generate: rgba(245, 158, 11, 0.4);
+  --btn-glow-copy: rgba(37, 99, 235, 0.3);
+  --transition-theme: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   全局基础样式
+   ============================================ */
+page {
+  background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 50%, var(--bg-start) 100%);
+  font-family: 'PingFang SC', 'Helvetica Neue', sans-serif;
+  color: #e2e8f0;
+  font-size: 28rpx;
+  line-height: 1.6;
+  transition: var(--transition-theme);
+}
+
+/* ============================================
+   通用容器
+   ============================================ */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 50%, var(--bg-start) 100%);
+  padding-bottom: 120rpx;
+  transition: background 0.5s ease, var(--transition-theme);
+}
+
+/* 磨砂玻璃卡片过渡 */
+.glass-card,
+.card {
+  transition: var(--transition-theme);
+}
+
+/* 按钮过渡 */
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-default,
+.btn-generate,
+.btn-action,
+.btn-copy,
+.btn-save {
+  transition: var(--transition-theme);
+}
+
+/* ============================================
+   磨砂玻璃卡片
+   ============================================ */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20rpx);
+  -webkit-backdrop-filter: blur(20rpx);
+  border: 1rpx solid var(--card-border);
+  border-radius: 20rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1rpx;
+  background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+  opacity: 0.5;
+}
+
+/* ============================================
+   王者荣耀金属边框卡片
+   ============================================ */
+.card {
+  background: var(--card-bg);
+  border: 2rpx solid var(--card-border);
+  border-radius: 16rpx;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+  position: relative;
+  box-shadow: 0 0 30rpx var(--primary-glow);
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4rpx;
+  background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+}
+
+/* ============================================
+   电竞风格按钮
+   ============================================ */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24rpx 48rpx;
+  border-radius: 50rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+  letter-spacing: 3rpx;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  border: none;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 2rpx;
+  left: 10%;
+  right: 10%;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.2), transparent);
+  border-radius: 50rpx 50rpx 50% 50%;
+}
+
+.btn-primary {
+  background: var(--btn-generate);
+  color: #fff;
+  box-shadow: 0 8rpx 30rpx var(--btn-glow-generate);
+}
+
+.btn-secondary {
+  background: var(--btn-copy);
+  color: #fff;
+  box-shadow: 0 4rpx 20rpx var(--btn-glow-copy);
+}
+
+.btn-default {
+  background: var(--btn-default);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1rpx solid rgba(255, 255, 255, 0.1);
+}
+
+.btn:active {
+  transform: scale(0.96);
+  filter: brightness(1.1);
+}
+
+.btn[disabled] {
+  opacity: 0.6;
+  transform: none;
+}
+
+/* ============================================
+   金属发光输入框
+   ============================================ */
+.input {
+  width: 100%;
+  padding: 24rpx 28rpx;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1rpx solid var(--card-border);
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  color: #fff;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 20rpx var(--primary-glow), inset 0 0 20rpx rgba(0, 0, 0, 0.3);
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.text-area {
+  height: 200rpx;
+  padding: 24rpx 28rpx;
+}
+
+/* ============================================
+   鎏金发光标题
+   ============================================ */
+.gold-text {
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20rpx var(--primary-glow);
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: 900;
+  background: linear-gradient(135deg, #fff 0%, var(--primary-light) 50%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 4rpx;
+  margin-bottom: 24rpx;
+  text-shadow: 0 0 30rpx var(--primary-glow);
+}
+
+/* ============================================
+   游戏风加载动画
+   ============================================ */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60rpx;
+}
+
+.loading-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border: 4rpx solid rgba(255, 255, 255, 0.1);
+  border-top: 4rpx solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ============================================
+   全局转场动画
+   ============================================ */
+.page-enter {
+  animation: pageFadeIn 0.6s ease;
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ============================================
+   Switch 组件主题色
+   ============================================ */
+switch {
+  transform: scale(0.9);
+}
+
+/* ============================================
+   滚动条样式
+   ============================================ */
+::-webkit-scrollbar {
+  display: none;
+}

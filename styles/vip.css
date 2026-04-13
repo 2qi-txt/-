@@ -1,0 +1,248 @@
+/**
+ * VIP中心页样式
+ * 对应原小程序: pages/vip/vip.wxss
+ */
+
+/* 贵族卡片 */
+.vip-section {
+  padding: 0 20px;
+  margin-top: -20px;
+}
+
+.vip-active-card {
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(15, 15, 23, 0.95) 0%, rgba(126, 34, 206, 0.2) 100%) !important;
+}
+
+.noble-active {
+  border-color: var(--primary-gold) !important;
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.3) !important;
+}
+
+.vip-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.noble-badge {
+  width: 32px;
+  height: 32px;
+  background: var(--metal-gradient);
+  color: #000;
+  font-size: 20px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-style: italic;
+}
+
+.vip-card-title {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--text-gold);
+  flex: 1;
+}
+
+.vip-expire {
+  font-size: 10px;
+  color: #64748b;
+}
+
+.vip-card-body {
+  display: flex;
+  justify-content: space-around;
+}
+
+.vip-quota-item {
+  text-align: center;
+}
+
+.quota-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.quota-value {
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 3px;
+}
+
+.quota-used {
+  font-size: 9px;
+  color: #64748b;
+}
+
+/* 贵族权益 */
+.benefits-section {
+  padding: 20px 20px;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.benefit-item {
+  background: rgba(15, 15, 23, 0.4);
+  border: 1px solid rgba(194, 156, 74, 0.1);
+  padding: 16px 12px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.benefit-icon {
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+.benefit-title {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.benefit-desc {
+  font-size: 10px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* 订阅方案 */
+.plans-section {
+  padding: 0 20px 30px;
+}
+
+.plans-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.plan-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+}
+
+.featured-plan {
+  border-color: var(--primary-purple) !important;
+  background: rgba(126, 34, 206, 0.1) !important;
+}
+
+.plan-info {
+  flex: 1;
+}
+
+.plan-name {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.plan-price {
+  margin-bottom: 2px;
+}
+
+.price-val {
+  font-size: 18px;
+  font-weight: 900;
+  color: #fff;
+  margin-right: 6px;
+}
+
+.price-origin {
+  font-size: 11px;
+  color: #64748b;
+  text-decoration: line-through;
+}
+
+.plan-desc {
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+.buy-btn {
+  width: 90px !important;
+  height: 36px !important;
+  font-size: 12px !important;
+  padding: 0 !important;
+  border-radius: 18px !important;
+}
+
+/* 倒计时 */
+.countdown {
+  text-align: center;
+  font-size: 12px;
+  color: var(--primary-gold);
+  padding: 8px 20px;
+  background: rgba(251, 191, 36, 0.1);
+  margin: 0 20px 16px;
+  border-radius: 4px;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+/* 推荐理由 */
+.tips {
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.tip-item {
+  font-size: 12px;
+  color: var(--text-secondary);
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(194, 156, 74, 0.1);
+}
+
+.tip-item:last-child {
+  border-bottom: none;
+}
+
+/* 订阅管理 */
+.subscription {
+  margin: 0 20px 16px;
+  padding: 14px;
+  background: var(--bg-secondary);
+  border: 1px solid rgba(194, 156, 74, 0.2);
+  border-radius: 6px;
+}
+
+.no-sub {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.sub-row {
+  font-size: 12px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.sub-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.sub-actions .btn {
+  flex: 1;
+}
+
+/* 底部操作 */
+.actions {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

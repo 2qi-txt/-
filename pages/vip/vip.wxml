@@ -1,0 +1,136 @@
+<view class="container page-enter {{currentTheme}}">
+  <!-- 头部：贵族特权中心 -->
+  <view class="page-header esports-header">
+    <view class="header-content">
+      <view class="page-title">贵族特权</view>
+      <view class="page-desc">解锁专属段位标识与神级文案能量</view>
+    </view>
+  </view>
+
+  <!-- 贵族身份卡片：复刻游戏贵族卡 -->
+  <view class="vip-section">
+    <view class="vip-active-card card {{vipStatus.isVip ? 'noble-active' : ''}}">
+      <view class="vip-card-header">
+        <view class="noble-badge {{vipStatus.vipLevel}}">
+          {{vipStatus.vipLevel === '王者通行证' ? '👑' : vipStatus.vipLevel === '钻石特权' ? '💎' : vipStatus.vipLevel === '新秀特权' ? '⭐' : '🎫'}}
+        </view>
+        <view class="vip-card-title">
+          {{vipStatus.isVip ? (vipStatus.vipLevel === '王者通行证' ? '王者' : vipStatus.vipLevel === '钻石特权' ? '钻石贵族' : vipStatus.vipLevel === '新秀特权' ? '新秀旅者' : '月度旅者') : '尚未觉醒'}}
+        </view>
+        <view class="vip-expire" wx:if="{{vipStatus.isVip && vipStatus.expireTime}}">有效期至：{{vipStatus.expireTime}}</view>
+      </view>
+      <view class="vip-card-body">
+        <view class="vip-quota-item">
+          <view class="quota-label">生成能量上限</view>
+          <view class="quota-value gold-text">{{vipStatus.dailyQuota.generate}}</view>
+          <view class="quota-used">今日消耗：{{vipStatus.usedToday.generate}}</view>
+        </view>
+        <view class="vip-quota-item">
+          <view class="quota-label">优化能量上限</view>
+          <view class="quota-value gold-text">{{vipStatus.dailyQuota.optimize}}</view>
+          <view class="quota-used">今日消耗：{{vipStatus.usedToday.optimize}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 贵族权益：类似游戏特权介绍 -->
+  <view class="benefits-section">
+    <view class="section-header">
+      <text class="header-text">贵族专属特权</text>
+    </view>
+    <view class="benefits-grid">
+      <view class="benefit-item">
+        <view class="benefit-icon">👑</view>
+        <view class="benefit-content">
+          <view class="benefit-title gold-text">无限灵感</view>
+          <view class="benefit-desc">每日50次神级文案生成</view>
+        </view>
+      </view>
+      <view class="benefit-item">
+        <view class="benefit-icon">⚡</view>
+        <view class="benefit-content">
+          <view class="benefit-title gold-text">极速施法</view>
+          <view class="benefit-desc">专属加速通道，响应快如闪电</view>
+        </view>
+      </view>
+      <view class="benefit-item">
+        <view class="benefit-icon">🛡️</view>
+        <view class="benefit-content">
+          <view class="benefit-title gold-text">专属段位</view>
+          <view class="benefit-desc">解锁"最强王者"专属头像框</view>
+        </view>
+      </view>
+      <view class="benefit-item">
+        <view class="benefit-icon">🔮</view>
+        <view class="benefit-content">
+          <view class="benefit-title gold-text">高级模型</view>
+          <view class="benefit-desc">支持更长、更精细的文案精炼</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 订阅方案：类似商城礼包 -->
+  <view class="plans-section">
+    <view class="section-header">
+      <text class="header-text">贵族晋升之路</text>
+    </view>
+    <view class="plans-list">
+      <view class="plan-card card {{item.id===featuredPlanId ? 'featured-plan' : ''}}" wx:for="{{plans}}" wx:key="id">
+        <view class="plan-info">
+          <view class="plan-name gold-text">{{item.name}}</view>
+          <view class="plan-price">
+            <text class="price-val">¥{{item.promoPriceText || item.priceText}}</text>
+            <text class="price-origin" wx:if="{{item.isPromo}}">¥{{item.originPriceText}}</text>
+          </view>
+          <view class="plan-desc">{{item.discountText || '立即解锁尊贵特权'}}</view>
+        </view>
+        <button class="btn btn-primary buy-btn" 
+                data-id="{{item.id}}" 
+                bindtap="selectPlan"
+                disabled="{{vipStatus.isVip && vipStatus.vipLevel === item.name}}">
+          {{vipStatus.isVip && vipStatus.vipLevel === item.name ? '已晋升' : '立即升级'}}
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <view class="countdown" wx:if="{{promoCountdownVisible}}">{{countdownText}}</view>
+
+  <view class="section-title">推荐理由</view>
+  <view class="tips">
+    <view class="tip-item" wx:for="{{recommendTips}}" wx:key="index">{{item}}</view>
+  </view>
+
+  <view class="section-title">订阅管理</view>
+  <!-- 连续包月管理 -->
+  <view class="subscription" wx:if="{{subscription.autoRenew}}">
+    <view class="sub-row">状态：{{subscription.cancelled ? '已取消，下月不续费' : '连续包月启用'}}</view>
+    <view class="sub-row">下次扣款：{{subscription.nextText}}</view>
+    <view class="sub-actions">
+      <button class="btn danger" bindtap="cancelAutoRenew" wx:if="{{!subscription.cancelled}}">取消连续包月</button>
+      <button class="btn primary" bindtap="resumeAutoRenew" wx:if="{{subscription.cancelled}}">恢复连续包月</button>
+    </view>
+  </view>
+  <!-- 单次套餐有效期 -->
+  <view class="subscription" wx:if="{{oneOffText}}">
+    <view class="sub-row">有效期至：{{oneOffText}}</view>
+    <button class="btn secondary mini" bindtap="showOpenDialog" wx:if="{{vipStatus.isVip}}">续费</button>
+  </view>
+  <!-- 未开通时提示 -->
+  <view class="subscription no-sub" wx:if="{{!subscription.autoRenew && !oneOffText && !vipStatus.isVip}}">
+    <view class="sub-row">暂无有效订阅，激活特权解锁更多</view>
+  </view>
+
+  <!-- 底部操作按钮 -->
+  <view class="actions">
+    <button class="btn btn-primary {{vipStatus.isVip ? 'btn-disabled' : ''}}" 
+            bindtap="showOpenDialog"
+            disabled="{{vipStatus.isVip}}">
+      {{vipStatus.isVip ? '已激活' : '立即激活'}}
+    </button>
+    <button class="btn btn-secondary" bindtap="showLearnMore">了解更多</button>
+    <button class="btn btn-danger mini" bindtap="closeVip" wx:if="{{vipStatus.isVip}}">关闭（测试）</button>
+  </view>
+</view>

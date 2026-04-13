@@ -1,0 +1,116 @@
+<view class="container page-enter {{themeClass}}">
+  <!-- 王者荣耀风 Banner -->
+  <view class="hero-banner">
+    <view class="hero-content">
+      <view class="hero-title">峡谷文案工坊</view>
+      <view class="hero-edition">KING'S GLORY EDITION</view>
+      <view class="hero-tags">
+        <text class="tag">智能AI</text>
+        <text class="tag">全能辅助</text>
+        <text class="tag">上分神器</text>
+      </view>
+    </view>
+    <view class="hero-decoration">
+      <view class="rune-circle"></view>
+    </view>
+  </view>
+
+  <!-- 功能导航：复刻游戏主功能区 -->
+  <view class="main-actions">
+    <view class="action-card primary-action" bindtap="navigateToGenerate">
+      <view class="action-inner">
+        <view class="action-icon">⚔️</view>
+        <view class="action-info">
+          <view class="action-name">文案生成</view>
+          <view class="action-desc">进入备战室</view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="action-card secondary-action" bindtap="navigateToOptimize">
+      <view class="action-inner">
+        <view class="action-icon">🛡️</view>
+        <view class="action-info">
+          <view class="action-name">文案优化</view>
+          <view class="action-desc">精炼属性</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 快速生成：类似游戏模式选择 -->
+  <view class="mode-selection">
+    <view class="section-header">
+      <text class="header-line"></text>
+      <text class="header-text">模式选择</text>
+      <text class="header-line"></text>
+    </view>
+    <view class="mode-grid">
+      <view class="mode-item" bindtap="quickGenerate" data-type="notice">
+        <view class="mode-icon-wrapper notice-bg">
+          <text class="mode-icon">📢</text>
+        </view>
+        <view class="mode-name">通知公告</view>
+        <view class="mode-level">难度：★☆☆</view>
+      </view>
+      
+      <view class="mode-item" bindtap="quickGenerate" data-type="announcement">
+        <view class="mode-icon-wrapper announcement-bg">
+          <text class="mode-icon">📋</text>
+        </view>
+        <view class="mode-name">活动预告</view>
+        <view class="mode-level">难度：★★☆</view>
+      </view>
+      
+      <view class="mode-item" bindtap="quickGenerate" data-type="club">
+        <view class="mode-icon-wrapper club-bg">
+          <text class="mode-icon">🎭</text>
+        </view>
+        <view class="mode-name">社团动态</view>
+        <view class="mode-level">难度：★★☆</view>
+      </view>
+      
+      <view class="mode-item" bindtap="quickGenerate" data-type="social">
+        <view class="mode-icon-wrapper social-bg">
+          <text class="mode-icon">📱</text>
+        </view>
+        <view class="mode-name">社交平台</view>
+        <view class="mode-level">难度：★★★</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 战绩/最近使用 -->
+  <view class="history-section" wx:if="{{recentItems.length > 0}}">
+    <view class="section-header">
+      <text class="header-text">最近战绩</text>
+    </view>
+    <view class="history-list">
+      <view class="history-item" wx:for="{{recentItems}}" wx:key="id" bindtap="openRecent" data-item="{{item}}">
+        <view class="history-rank">MVP</view>
+        <view class="history-info">
+          <view class="history-title">{{item.title}}</view>
+          <view class="history-time">{{item.time}}</view>
+        </view>
+        <view class="history-arrow">▶</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 赛季统计 -->
+  <view class="season-stats">
+    <view class="stats-card game-style-card">
+      <view class="stats-header">当前赛季统计</view>
+      <view class="stats-body">
+        <view class="stats-item">
+          <view class="stats-val gold-text">{{stats.generated}}</view>
+          <view class="stats-label">击败灵感荒漠</view>
+        </view>
+        <view class="stats-item">
+          <view class="stats-val gold-text">{{stats.optimized}}</view>
+          <view class="stats-label">文案助攻数</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

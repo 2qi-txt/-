@@ -1,0 +1,217 @@
+<view class="container page-enter {{currentTheme}}">
+  <!-- 个人主页标题 -->
+  <view class="page-header">
+    <view class="header-glow"></view>
+    <view class="header-content">
+      <view class="page-title-wrap">
+        <view class="page-title">召唤师档案</view>
+        <view class="page-subtitle">SUMMONER PROFILE</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 个人信息卡片 -->
+  <view class="profile-section">
+    <view class="profile-card glass-card">
+      <view class="profile-left">
+        <view class="avatar-container">
+          <image src="{{userInfo.avatarUrl || 'data:image/gif;base64,R0lGODlhAQABAAAAACw='}}" class="avatar-img" mode="aspectFill"></image>
+          <view class="avatar-border"></view>
+        </view>
+      </view>
+      <view class="profile-right">
+        <view class="user-name">{{userInfo.nickName || '最强召唤师'}}</view>
+        <view class="user-id">ID: 20240404</view>
+        <view class="user-tags">
+          <text class="tag-item">文案之神</text>
+          <text class="tag-item">创意MVP</text>
+        </view>
+      </view>
+      <view class="edit-action" bindtap="editProfile">
+        <text class="edit-btn">编辑</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 竞技荣誉/统计 -->
+  <view class="honor-section">
+    <view class="section-header">
+      <text class="section-title">赛季数据</text>
+    </view>
+    <view class="honor-grid">
+      <view class="honor-item">
+        <view class="honor-val">{{stats.generated}}</view>
+        <view class="honor-label">击败灵感荒漠</view>
+      </view>
+      <view class="honor-item">
+        <view class="honor-val">{{stats.optimized}}</view>
+        <view class="honor-label">文案助攻数</view>
+      </view>
+      <view class="honor-item">
+        <view class="honor-val">{{stats.favorites}}</view>
+        <view class="honor-label">收藏勋章</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 全局主题皮肤选择 -->
+  <view class="theme-section">
+    <view class="section-header">
+      <view class="section-title-wrap">
+        <text class="section-num">01</text>
+        <text class="section-title">主题皮肤</text>
+      </view>
+      <text class="section-hint">全局生效</text>
+    </view>
+    <view class="theme-grid">
+      <view class="theme-card {{currentTheme === 'skin-libai' ? 'active' : ''}}" bindtap="selectTheme" data-theme="skin-libai">
+        <view class="theme-bg libai-bg"></view>
+        <view class="theme-overlay"></view>
+        <view class="theme-content">
+          <view class="theme-icon libai-icon">墨</view>
+          <text class="theme-name">李白</text>
+          <text class="theme-desc">墨韵剑气</text>
+        </view>
+        <view class="theme-check" wx:if="{{currentTheme === 'skin-libai'}}">✓</view>
+      </view>
+      <view class="theme-card {{currentTheme === 'skin-diaochan' ? 'active' : ''}}" bindtap="selectTheme" data-theme="skin-diaochan">
+        <view class="theme-bg diaochan-bg"></view>
+        <view class="theme-overlay"></view>
+        <view class="theme-content">
+          <view class="theme-icon diaochan-icon">舞</view>
+          <text class="theme-name">貂蝉</text>
+          <text class="theme-desc">幻舞流光</text>
+        </view>
+        <view class="theme-check" wx:if="{{currentTheme === 'skin-diaochan'}}">✓</view>
+      </view>
+      <view class="theme-card {{currentTheme === 'skin-lan' ? 'active' : ''}}" bindtap="selectTheme" data-theme="skin-lan">
+        <view class="theme-bg lan-bg"></view>
+        <view class="theme-overlay"></view>
+        <view class="theme-content">
+          <view class="theme-icon lan-icon">澜</view>
+          <text class="theme-name">澜</text>
+          <text class="theme-desc">深海暗影</text>
+        </view>
+        <view class="theme-check" wx:if="{{currentTheme === 'skin-lan'}}">✓</view>
+      </view>
+      <view class="theme-card {{currentTheme === 'skin-caiwenji' ? 'active' : ''}}" bindtap="selectTheme" data-theme="skin-caiwenji">
+        <view class="theme-bg caiwenji-bg"></view>
+        <view class="theme-overlay"></view>
+        <view class="theme-content">
+          <view class="theme-icon caiwenji-icon">琴</view>
+          <text class="theme-name">蔡文姬</text>
+          <text class="theme-desc">萌音跃动</text>
+        </view>
+        <view class="theme-check" wx:if="{{currentTheme === 'skin-caiwenji'}}">✓</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 系统设置菜单 -->
+  <view class="menu-section">
+    <view class="section-header">
+      <view class="section-title-wrap">
+        <text class="section-num">02</text>
+        <text class="section-title">系统设置</text>
+      </view>
+    </view>
+    <view class="menu-list glass-card">
+      <view class="menu-item">
+        <view class="menu-info">
+          <view class="menu-icon-wrap">⚡</view>
+          <view class="menu-text">灵感推送</view>
+        </view>
+        <switch color="#6366f1" checked="{{settings.notifications}}" bindchange="toggleNotifications" />
+      </view>
+      
+      <view class="menu-item">
+        <view class="menu-info">
+          <view class="menu-icon-wrap">💾</view>
+          <view class="menu-text">战报自动存盘</view>
+        </view>
+        <switch color="#6366f1" checked="{{settings.autoSave}}" bindchange="toggleAutoSave" />
+      </view>
+
+      <view class="menu-item arrow" bindtap="navigateToVip">
+        <view class="menu-info">
+          <view class="menu-icon-wrap">👑</view>
+          <view class="menu-text">贵族特权</view>
+        </view>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 数据管理 -->
+  <view class="menu-section">
+    <view class="section-header">
+      <view class="section-title-wrap">
+        <text class="section-num">03</text>
+        <text class="section-title">数据管理</text>
+      </view>
+    </view>
+    <view class="menu-list glass-card">
+      <view class="menu-item arrow" bindtap="clearCache">
+        <view class="menu-info">
+          <view class="menu-icon-wrap">🧹</view>
+          <view class="menu-text">清理战场缓存</view>
+        </view>
+        <text class="menu-arrow">›</text>
+      </view>
+      <view class="menu-item arrow" bindtap="exportData">
+        <view class="menu-info">
+          <view class="menu-icon-wrap">📤</view>
+          <view class="menu-text">导出战报数据</view>
+        </view>
+        <text class="menu-arrow">›</text>
+      </view>
+      <view class="menu-item arrow" bindtap="importData">
+        <view class="menu-info">
+          <view class="menu-icon-wrap">📥</view>
+          <view class="menu-text">导入外部情报</view>
+        </view>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 关于应用 -->
+  <view class="menu-section">
+    <view class="section-header">
+      <view class="section-title-wrap">
+        <text class="section-num">04</text>
+        <text class="section-title">关于应用</text>
+      </view>
+    </view>
+    <view class="menu-list glass-card">
+      <view class="menu-item" bindtap="checkUpdate">
+        <view class="menu-info">
+          <view class="menu-icon-wrap">🔄</view>
+          <view class="menu-text">检查版本更新</view>
+        </view>
+        <text class="menu-arrow version">{{appVersion}} ›</text>
+      </view>
+      <view class="menu-item arrow" bindtap="navigateToFeedback">
+        <view class="menu-info">
+          <view class="menu-icon-wrap">💬</view>
+          <view class="menu-text">意见反馈</view>
+        </view>
+        <text class="menu-arrow">›</text>
+      </view>
+      <view class="menu-item arrow" bindtap="navigateToPrivacy">
+        <view class="menu-info">
+          <view class="menu-icon-wrap">🔒</view>
+          <view class="menu-text">隐私政策</view>
+        </view>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 重置设置 -->
+  <view class="reset-section">
+    <button class="btn-reset" bindtap="resetSettings">
+      <text>重置所有竞技设置</text>
+    </button>
+  </view>
+</view>
